@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../di/setup.dart';
 import '../bloc/character_list_bloc.dart';
@@ -41,11 +42,13 @@ class Content extends StatelessWidget {
           return ListView.builder(
             itemCount: state.characters.length,
             itemBuilder: (_, index) => CharacterCard(
-              quote: state.characters[index],
+              character: state.characters[index],
             ),
           );
+          //return Text(AppLocalizations.of(context)!.helloWorld);
         } else if (state is Error) {
-          return Center(
+          return Container(
+            padding: const EdgeInsets.all(32),
             child: Text(state.message),
           );
         }
