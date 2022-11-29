@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../domain/entities/character_entity.dart';
+import '../models/CharacterItem.dart';
 
 @immutable
 abstract class CharacterListState extends Equatable {
@@ -14,7 +14,7 @@ class Empty extends CharacterListState {}
 class Loading extends CharacterListState {}
 
 class Success extends CharacterListState {
-  final List<Character> characters;
+  final List<CharacterItem> characters;
 
   Success({required this.characters});
 }

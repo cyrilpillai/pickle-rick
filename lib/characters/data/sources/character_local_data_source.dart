@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../models/character_model.dart';
+import '../models/character_dto.dart';
 
 const charactersCache = 'characters_cache';
 
@@ -13,18 +13,18 @@ class CharacterLocalDataSource {
 
   CharacterLocalDataSource(this._sharedPreferences);
 
-  Future<List<CharacterModel>> fetchCharacters() async {
+  Future<List<CharacterDTO>> fetchCharacters() async {
     final jsonString = _sharedPreferences.getString(charactersCache);
     if (jsonString != null) {
       return Future.value((jsonDecode(jsonString) as List)
-          .map((e) => CharacterModel.fromJson(e))
+          .map((e) => CharacterDTO.fromJson(e))
           .toList());
     } else {
       throw Exception('Cache miss');
     }
   }
 
-  saveCharacters(List<CharacterModel> characters) async {
+  saveCharacters(List<CharacterDTO> characters) async {
     final list = characters.map((e) => e.toJson()).toList();
     _sharedPreferences.setString(charactersCache, jsonEncode(list));
   }

@@ -9,9 +9,9 @@ class CharacterUseCase {
 
   CharacterUseCase(this._charactersRepository);
 
-  Future<List<Character>> fetchCharacters(bool forceUpdate) async {
+  Future<List<CharacterEntity>> fetchCharacters(bool forceUpdate) async {
     return (await _charactersRepository.fetchCharacters(forceUpdate))
-        .map((e) => Character.fromModel(e))
+        .map((e) => CharacterEntity.fromModel(e))
         .toList();
   }
 }

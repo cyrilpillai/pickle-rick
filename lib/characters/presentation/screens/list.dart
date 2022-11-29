@@ -35,27 +35,37 @@ class Content extends StatelessWidget {
         if (state is Empty) {
           context.read<CharacterListBloc>().add(Rendered());
         } else if (state is Loading) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return _buildLoading();
         } else if (state is Success) {
-          return ListView.builder(
-            itemCount: state.characters.length,
-            itemBuilder: (_, index) => CharacterCard(
-              character: state.characters[index],
-            ),
-          );
+          return _buildSuccess(state);
           //return Text(AppLocalizations.of(context)!.helloWorld);
         } else if (state is Error) {
-          return Container(
-            padding: const EdgeInsets.all(32),
-            child: Text(state.message),
-          );
+          return _buildError(state);
         }
-
-        //return Text(AppLocalizations.of(context)!.helloWorld);
         return const SizedBox();
       },
+    );
+  }
+
+  Widget _buildLoading() {
+    return const Center(
+      child: CircularProgressIndicator(),
+    );
+  }
+
+  Widget _buildSuccess(Success success) {
+    return ListView.builder(
+      itemCount: success.characters.length,
+      itemBuilder: (_, index) => CharacterCard(
+        characterItem: success.characters[index],
+      ),
+    );
+  }
+
+  Widget _buildError(Error error) {
+    return Container(
+      padding: const EdgeInsets.all(32),
+      child: Text(error.message),
     );
   }
 }

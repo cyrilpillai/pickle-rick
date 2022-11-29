@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'location_model.dart';
-import 'origin_model.dart';
+import 'location_dto.dart';
+import 'origin_dto.dart';
 
-part 'character_model.g.dart';
+part 'character_dto.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class CharacterModel {
+class CharacterDTO {
   final int id;
   final String name;
   final String status;
@@ -19,11 +19,11 @@ class CharacterModel {
   @JsonKey(name: 'episode')
   final List<String> episodes;
   @JsonKey(name: 'origin')
-  final OriginModel originModel;
+  final OriginDTO originModel;
   @JsonKey(name: 'location')
-  final LocationModel locationModel;
+  final LocationDTO locationModel;
 
-  CharacterModel(
+  const CharacterDTO(
     this.id,
     this.name,
     this.status,
@@ -37,8 +37,8 @@ class CharacterModel {
     this.locationModel,
   );
 
-  factory CharacterModel.fromJson(Map<String, dynamic> json) =>
-      _$CharacterModelFromJson(json);
+  factory CharacterDTO.fromJson(Map<String, dynamic> json) =>
+      _$CharacterDTOFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CharacterModelToJson(this);
+  Map<String, dynamic> toJson() => _$CharacterDTOToJson(this);
 }

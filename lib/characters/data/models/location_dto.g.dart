@@ -1,19 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'origin_model.dart';
+part of 'location_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-OriginModel _$OriginModelFromJson(Map<String, dynamic> json) {
-  return OriginModel(
+LocationDTO _$LocationDTOFromJson(Map<String, dynamic> json) {
+  return LocationDTO(
     json['name'] as String,
     json['url'] as String,
   );
 }
 
-Map<String, dynamic> _$OriginModelToJson(OriginModel instance) =>
+Map<String, dynamic> _$LocationDTOToJson(LocationDTO instance) =>
     <String, dynamic>{
       'name': instance.name,
       'url': instance.url,
