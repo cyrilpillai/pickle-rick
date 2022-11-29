@@ -21,6 +21,10 @@ class CharacterCard extends StatelessWidget {
             _buildAvatar(),
             const Padding(padding: EdgeInsets.all(8)),
             _buildDetails(),
+            _buildGenderIcon(
+              characterItem.genderIcon,
+              characterItem.genderColor,
+            )
           ],
         ),
       ),
@@ -91,5 +95,9 @@ class CharacterCard extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget _buildGenderIcon(IconData iconData, Color color) {
+    return Icon(iconData, color: color);
   }
 }

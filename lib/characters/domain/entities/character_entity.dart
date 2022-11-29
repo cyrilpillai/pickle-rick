@@ -1,11 +1,10 @@
 import 'package:pickle_rick/characters/data/models/character_dto.dart';
-import 'package:recase/recase.dart';
 
 class CharacterEntity {
   final int id;
   final String name;
-  final String status;
-  final String gender;
+  final Status status;
+  final Gender gender;
   final String type;
   final String imageUrl;
 
@@ -21,10 +20,40 @@ class CharacterEntity {
   factory CharacterEntity.fromModel(CharacterDTO characterModel) =>
       CharacterEntity(
         id: characterModel.id,
-        name: characterModel.name.titleCase,
-        status: characterModel.status.sentenceCase,
-        gender: characterModel.gender,
+        name: characterModel.name,
+        status: characterModel.status._toStatus(),
+        gender: characterModel.gender._toGender(),
         type: characterModel.type,
         imageUrl: characterModel.imageUrl,
       );
+}
+
+enum Status { alive, dead, unknown }
+
+enum Gender { male, female, genderless, unknown }
+
+extension CharacterEnums on String {
+  Status _toStatus() {
+    switch (toLowerCase()) {
+      case 'alive':
+        return Status.alive;
+      case 'dead':
+        return Status.alive;
+      default:
+        return Status.unknown;
+    }
+  }
+
+  Gender _toGender() {
+    switch (toLowerCase()) {
+      case 'male':
+        return Gender.male;
+      case 'female':
+        return Gender.female;
+      case 'genderless':
+        return Gender.genderless;
+      default:
+        return Gender.unknown;
+    }
+  }
 }
