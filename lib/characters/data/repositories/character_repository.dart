@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:injectable/injectable.dart';
 
 import '../models/character_model.dart';
-import '../models/characters_envelope_model.dart';
 import '../sources/character_local_data_source.dart';
 import '../sources/character_remote_data_source.dart';
 
@@ -31,7 +30,9 @@ class CharacterRepository {
       final response = await _remoteDataSource.fetchCharacters();
       if (response.statusCode == 200) {
         log(response.data.toString());
-        final characters = CharactersEnvelopeModel.fromJson(response.data).characters;
+        final characters = (response.data as List)
+            .map((e) => CharacterModel.fromJson(e))
+            .toList();
         _localDataSource.saveCharacters(characters);
         return characters;
       } else {
