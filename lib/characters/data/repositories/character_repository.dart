@@ -32,7 +32,8 @@ class CharacterRepository {
         log(response.data.toString());
         final characters = (response.data as List)
             .map((e) => CharacterDTO.fromJson(e))
-            .toList();
+            .toList()
+          ..shuffle();
         _localDataSource.saveCharacters(characters);
         return characters;
       } else {
