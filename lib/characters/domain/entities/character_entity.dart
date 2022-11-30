@@ -7,6 +7,7 @@ class CharacterEntity {
   final Gender gender;
   final String type;
   final String imageUrl;
+  final String location;
 
   const CharacterEntity({
     required this.id,
@@ -15,6 +16,7 @@ class CharacterEntity {
     required this.gender,
     required this.type,
     required this.imageUrl,
+    required this.location,
   });
 
   factory CharacterEntity.fromModel(CharacterDTO characterModel) =>
@@ -25,6 +27,7 @@ class CharacterEntity {
         gender: characterModel.gender._toGender(),
         type: characterModel.type,
         imageUrl: characterModel.imageUrl,
+        location: characterModel.locationModel.name,
       );
 }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/CharacterItem.dart';
+import '../models/character_item.dart';
 
 class CharacterCard extends StatelessWidget {
   final CharacterItem characterItem;
@@ -47,6 +47,8 @@ class CharacterCard extends StatelessWidget {
         _buildTitle(),
         const Padding(padding: EdgeInsets.only(top: 4)),
         _buildDescription(),
+        const Padding(padding: EdgeInsets.only(top: 4)),
+        _buildLocation(),
       ],
     ));
   }
@@ -79,6 +81,31 @@ class CharacterCard extends StatelessWidget {
         Expanded(
           child: Text(
             characterItem.description,
+            textAlign: TextAlign.start,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontStyle: FontStyle.normal,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLocation() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Icon(
+          Icons.location_on,
+          color: Colors.red,
+          size: 14,
+        ),
+        const Padding(padding: EdgeInsets.symmetric(horizontal: 4)),
+        Expanded(
+          child: Text(
+            characterItem.location,
             textAlign: TextAlign.start,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,

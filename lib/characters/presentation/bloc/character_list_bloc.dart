@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/usecases/character_usecase.dart';
-import '../models/CharacterItem.dart';
+import '../models/character_item.dart';
 import 'character_list_event.dart';
 import 'character_list_state.dart';
 

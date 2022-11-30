@@ -10,6 +10,7 @@ class CharacterItem {
   final IconData genderIcon;
   final Color genderColor;
   final String imageUrl;
+  final String location;
 
   const CharacterItem({
     required this.title,
@@ -18,6 +19,7 @@ class CharacterItem {
     required this.genderIcon,
     required this.genderColor,
     required this.imageUrl,
+    required this.location,
   });
 
   factory CharacterItem.fromEntity(CharacterEntity characterEntity) {
@@ -32,6 +34,7 @@ class CharacterItem {
       genderIcon: _getGenderIcon(characterEntity.gender),
       genderColor: _getGenderColor(characterEntity.gender),
       imageUrl: characterEntity.imageUrl,
+      location: characterEntity.location,
     );
   }
 
