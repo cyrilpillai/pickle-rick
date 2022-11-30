@@ -7,6 +7,6 @@ abstract class CharacterListEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class Rendered extends CharacterListEvent {}
+class Initial extends CharacterListEvent {}
 
 class RefreshClicked extends CharacterListEvent {}

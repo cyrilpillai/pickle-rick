@@ -33,7 +33,7 @@ class Content extends StatelessWidget {
     return BlocBuilder<CharacterListBloc, CharacterListState>(
       builder: (context, state) {
         if (state is Empty) {
-          context.read<CharacterListBloc>().add(Rendered());
+          context.read<CharacterListBloc>().add(Initial());
         } else if (state is Loading) {
           return _buildLoading();
         } else if (state is Success) {
@@ -54,11 +54,16 @@ class Content extends StatelessWidget {
   }
 
   Widget _buildSuccess(Success success) {
-    return ListView.builder(
+    return ListView.separated(
       itemCount: success.characters.length,
       itemBuilder: (_, index) => CharacterCard(
         characterItem: success.characters[index],
       ),
+      separatorBuilder: (BuildContext context, int index) {
+        return const Divider(
+          thickness: 1,
+        );
+      },
     );
   }
 

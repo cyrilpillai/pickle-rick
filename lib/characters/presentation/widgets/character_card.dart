@@ -9,24 +9,18 @@ class CharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          children: [
-            _buildAvatar(),
-            const Padding(padding: EdgeInsets.all(8)),
-            _buildDetails(),
-            _buildGenderIcon(
-              characterItem.genderIcon,
-              characterItem.genderColor,
-            )
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Row(
+        children: [
+          _buildAvatar(),
+          const Padding(padding: EdgeInsets.all(8)),
+          _buildDetails(),
+          _buildGenderIcon(
+            characterItem.genderIcon,
+            characterItem.genderColor,
+          )
+        ],
       ),
     );
   }

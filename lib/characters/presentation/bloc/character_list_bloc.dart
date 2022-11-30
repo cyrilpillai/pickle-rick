@@ -11,7 +11,7 @@ class CharacterListBloc extends Bloc<CharacterListEvent, CharacterListState> {
   final CharacterUseCase _characterUseCase;
 
   CharacterListBloc(this._characterUseCase) : super(Empty()) {
-    on<Rendered>((event, emit) => _fetchCharacters(
+    on<Initial>((event, emit) => _fetchCharacters(
           event,
           emit,
         ));
