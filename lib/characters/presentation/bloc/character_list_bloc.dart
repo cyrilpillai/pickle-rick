@@ -32,6 +32,9 @@ class CharacterListBloc extends Bloc<CharacterListEvent, CharacterListState> {
       emit(Error(message: error.toString()));
     });
 
+    //API is quick and we want to show the cool loading view, so...
+    await Future.delayed(const Duration(seconds: 1));
+
     final List<CharacterItem> list =
         characters.map((e) => CharacterItem.fromEntity(e)).toList();
     emit(Success(characters: list));

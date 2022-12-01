@@ -60,7 +60,6 @@ class CharacterCard extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       style: const TextStyle(
         fontSize: 16,
-        color: Colors.black,
       ),
     );
   }

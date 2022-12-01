@@ -48,8 +48,13 @@ class Content extends StatelessWidget {
   }
 
   Widget _buildLoading() {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return SizedBox.expand(
+      child: Container(
+        color: Colors.white,
+        child: Image.asset(
+          "assets/images/loading.gif",
+        ),
+      ),
     );
   }
 
