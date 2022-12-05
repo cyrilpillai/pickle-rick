@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:injectable/injectable.dart';
 
 import '../models/character_dto.dart';
@@ -16,7 +14,7 @@ class CharacterRepository {
   Future<List<CharacterDTO>> fetchCharacters(bool forceUpdate) async {
     try {
       if (!forceUpdate) {
-        return await _localDataSource.fetchCharacters();
+        return _localDataSource.fetchCharacters();
       } else {
         return _fetchCharactersRemote();
       }
@@ -29,7 +27,6 @@ class CharacterRepository {
     try {
       final response = await _remoteDataSource.fetchCharacters();
       if (response.statusCode == 200) {
-        log(response.data.toString());
         final characters = (response.data as List)
             .map((e) => CharacterDTO.fromJson(e))
             .toList()
