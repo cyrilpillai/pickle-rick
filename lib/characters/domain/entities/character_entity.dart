@@ -19,15 +19,15 @@ class CharacterEntity {
     required this.location,
   });
 
-  factory CharacterEntity.fromModel(CharacterDTO characterModel) =>
+  factory CharacterEntity.fromModel(CharacterDTO characterDTO) =>
       CharacterEntity(
-        id: characterModel.id,
-        name: characterModel.name,
-        status: characterModel.status._toStatus(),
-        gender: characterModel.gender._toGender(),
-        type: characterModel.type,
-        imageUrl: characterModel.imageUrl,
-        location: characterModel.locationModel.name,
+        id: characterDTO.id,
+        name: characterDTO.name,
+        status: characterDTO.status._toStatus(),
+        gender: characterDTO.gender._toGender(),
+        type: characterDTO.type,
+        imageUrl: characterDTO.imageUrl,
+        location: characterDTO.locationModel.name,
       );
 }
 

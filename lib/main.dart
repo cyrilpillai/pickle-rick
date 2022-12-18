@@ -6,5 +6,5 @@ import 'di/setup.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  runApp(const MyApp());
+  runApp(const PickleRickApp());
 }
